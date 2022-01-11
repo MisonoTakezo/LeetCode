@@ -8,10 +8,8 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        mx, mn = 0, prices[0]
-        for i in range(1, len(prices)):
-            if prices[i] > prices[i - 1]:
-                mx = max(mx, prices[i] - mn)
-            else:
-                mn = min(mn, prices[i])
+        mx, mn = 0, float("inf")
+        for price in prices:
+          mn = min(mn, price)
+          mx = max(mx, price - mn)
         return mx
